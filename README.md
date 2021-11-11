@@ -1,2 +1,0 @@
-# PineapleApp
-PineapleApp Supermarket
