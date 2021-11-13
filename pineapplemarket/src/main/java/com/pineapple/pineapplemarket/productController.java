@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost")
 public class productController {
 
-    ///Metodo que va devolver una lista de productos
+    ///Metodo para buscar muchos productos
+    //Devuelve un listado de productos
     @GetMapping("/GetProducts")
     public List<Product> GetProducts(){
 
@@ -26,24 +27,46 @@ public class productController {
         return products;
     } 
 
-    ///Metodo que va insertar 1 producto
+    ///Metodo para crear un producto
+    ///Recibe por parametro el producto
+    //Devuelve true en caso de exito
     @GetMapping("/InsertProduct")
-    public void InsertProduct(Product product){
+    public boolean InsertProduct(Product product){
 
+        boolean result = true;
+
+        return result;
     } 
 
+    ///Metodo para actualizar un producto
+    ///Recibe por parametro el producto
+    //Devuelve true en caso de exito
     @GetMapping("/UpdateProduct")
-    public void UpdateProduct(Product product){
+    public boolean UpdateProduct(Product product){
 
+        boolean result = true;
+
+        return result;
     } 
 
+    ///Metodo para buscar un producto
+    ///Recibe por parametro el name
+    //Devuelve el producto
     @GetMapping("/GetProduct")
-    public void GetProduct(String name){
+    public Product GetProduct(String name){
+        Product product = new Product();
 
+
+        return product;
     } 
 
+    ///Metodo para eliminar un producto
+    ///Recibe por parametro el name
+    //Devuelve true en caso de exito
     @GetMapping("/DeleteProduct")
-    public void DeleteProduct(String name){
+    public boolean DeleteProduct(String name){
+        boolean result = true;
 
+        return result;
     } 
 }

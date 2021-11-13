@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost")
 public class userController {
 
-    ///Metodo que va devolver una lista de productos
+    ///Metodo para buscar muchos usuarios
+    //Devuelve un listado de usuarios
     @GetMapping("/GetUsers")
     public List<user> GetUsers(){
 
@@ -26,17 +27,25 @@ public class userController {
         return users;
     } 
 
-    ///Metodo que va insertar 1 producto
+    ///Metodo para crear un usuario
+    ///Recibe por parametro el usuario
+    //Devuelve true en caso de exito
     @GetMapping("/InsertUsert")
     public void InsertProduct(user user){
 
     } 
 
+    ///Metodo para actualizar un usuario
+    ///Recibe por parametro el usuario
+    //Devuelve true en caso de exito
     @GetMapping("/UpdateUser")
     public void UpdateProduct(user user){
 
     } 
 
+    ///Metodo para buscar un usuario
+    ///Recibe por parametro el id
+    //Devuelve el usuario
     @GetMapping("/GetUser")
     public user GetUser(long id){
         user user = new user();
@@ -44,16 +53,11 @@ public class userController {
         return user;
     } 
 
+    ///Metodo para eliminar un usuario
+    ///Recibe por parametro el usuario
+    //Devuelve true en caso de exito
     @GetMapping("/DeleteUser")
     public void DeleteUser(long id){
 
-    } 
-   
-
-    @GetMapping("/VerifyUser")
-    public user VerifyUser(String login, String pass){
-        user user = new user();
-
-        return user;
     } 
 }
