@@ -1,6 +1,6 @@
 
 
-const LogComponent= ({img}) => {
+const ForgetPassComponent= ({img}) => {
   
   
 
@@ -15,7 +15,7 @@ const LogComponent= ({img}) => {
     <input type="email" class="form-control is-valid" id="validationServer01" placeholder="ejemplo@gmail.com" required/>
   </div>
   <div class="col-md-4">
-    <label for="validationServer02" class="form-label">Password</label>
+    <label for="validationServer02" class="form-label">New Password</label>
     <input type="password" class="form-control is-valid" id="validationServer02" placeholder="Contraseña420." required/>
 
   </div>
@@ -25,7 +25,6 @@ const LogComponent= ({img}) => {
       <div>
         <ul type="none">
           <li> <a  href={'/singin'}>Create a new user</a></li>
-          <li><a  href={'/forget'}>Forget your password?</a></li>
        
         
         </ul>
@@ -33,7 +32,7 @@ const LogComponent= ({img}) => {
     </div>
   </div>
   <div class="col-12">
-    <button class="btn btn-outline-success" type="submit">Login</button>
+    <button class="btn btn-outline-success" type="submit">Reset Password</button>
   </div>
 </form>
 </div>
@@ -41,4 +40,4 @@ const LogComponent= ({img}) => {
         
     )
 }
-export default LogComponent;
+export default ForgetPassComponent;

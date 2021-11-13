@@ -1,48 +1,25 @@
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
-const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success',
-      cancelButton: 'btn btn-danger'
-    },
-    buttonsStyling: false
-  })
-  
-  swalWithBootstrapButtons.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Yes, delete it!',
-    cancelButtonText: 'No, cancel!',
-    reverseButtons: true
-  }).then((result) => {
-    if (result.isConfirmed) {
-      swalWithBootstrapButtons.fire(
-        'Deleted!',
-        'Your file has been deleted.',
-        'success'
-      )
-    } else if (
-      /* Read more about handling dismissals below */
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
-      swalWithBootstrapButtons.fire(
-        'Cancelled',
-        'Your imaginary file is safe :)',
-        'error'
-      )
-    }
-  })
 const UserComponent= ({img}) => {
   
   
 
     
     return(
-        <div className="navColor">
-<table class="table table-warnig table-hover">
+        <div> 
+        <div className="btnexport">
+        <ReactHTMLTableToExcel
+                            id="test-table-xls-button"
+                            className="btn btn-outline-success"
+                            table="table-to-xls-user"
+                            filename="User-List"
+                            sheet="tableUser"
+                            buttonText="Download List"/>
+                  </div>          
+                       
+<table id="table-to-xls-user" class="table table-warnig table-hover">
 
   <thead>
     <tr>
@@ -50,8 +27,8 @@ const UserComponent= ({img}) => {
       <th scope="col">User</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Eliminar</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -60,7 +37,7 @@ const UserComponent= ({img}) => {
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><a id="modificar"  name="modificar" swalWithBootstrapButtons={swalWithBootstrapButtons} href="ModificarDatos?=ID"   ><FontAwesomeIcon icon={faPencilAlt} /></a></td>
+      <td><a id="modificar"  name="modificar" href="ModificarDatos?=ID"   ><FontAwesomeIcon icon={faPencilAlt} /></a></td>
       <td><a id="eliminar" name="eliminar" href="EliminarDatos?ID="><FontAwesomeIcon icon={faTrash} /> </a></td>
     </tr>
     <tr>

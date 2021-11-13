@@ -1,11 +1,14 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
-import InfoLogin from './containers/login';
-import InfoSingin from './containers/singin';
+import InfoLogin from './containers/Login';
+import InfoSingin from './containers/Singin';
 import HomeContainer from './containers/HomeContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import { EcommerceProvider } from './context/EcommerceContext';
 import UserCont from './containers/UserContainer';
+import NewProductContainer from './containers/NewProductContainer';
+import ForgetPassContain from './containers/ForgetPassContainer';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 
 
@@ -35,6 +38,12 @@ const App= () => {
         </Route>
         <Route path="/home">
           <HomeContainer/>
+        </Route>
+        <Route path="/forget">
+        <ForgetPassContain/>
+        </Route>
+        <Route path="/newproduct">
+          <NewProductContainer/>
         </Route>
         <Route path="/user">
           <UserCont/>

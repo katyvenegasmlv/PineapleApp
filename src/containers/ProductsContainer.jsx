@@ -5,7 +5,7 @@ import CardComponent from "../components/CardComponent";
 import InfoBarComponent from "../components/InfoBar";
 import { EcommerceContext } from "../context/EcommerceContext";
 import NavComponent from "../components/NavComponent";
-
+import ProductComponent from "../components/ProductsList";
 
 
 const ProductsContainer = () => {
@@ -45,6 +45,8 @@ const ProductsContainer = () => {
         <div className="container">
           <NavComponent/>
           <InfoBarComponent carrito={carrito} handleKeyUp={handleKeyUp}/>
+          <a href={'/newproduct'} className="aTitulo">Create a new Product </a>
+          <ProductComponent/>
             <div clasName="row">
                 {products.map((element, index) =>{
                   
@@ -55,9 +57,7 @@ const ProductsContainer = () => {
                       </div>
                     )
                 })}
-        <CardComponent title={'Shoe'} img="https://viamo.vteximg.com.br/arquivos/ids/238162-1800-2300/VC07021CV009.jpg?v=637643096288200000" Agregar={Agregar}/>
-        <CardComponent title={'Bag'} img="https://static.dafiti.com.ar/p/prune-6577-880085-1-zoom.jpg"  Agregar={Agregar}/>
-      
+        
       </div>
       </div>
     )
