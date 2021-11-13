@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/product")
 @CrossOrigin(origins = "http://localhost")
-public class productRest {
+public class productController {
 
     ///Metodo que va devolver una lista de productos
     @GetMapping("/GetProducts")
