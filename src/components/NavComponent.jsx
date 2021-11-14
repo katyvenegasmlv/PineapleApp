@@ -9,7 +9,7 @@ const NavComponent= ({img}) => {
         <div className="navColor">
 
             <h1>
-     <a href={'/'} className="aTitulo">Pineaple Supermarket </a>
+     <a href={'/'} className="aTitulo">Pineapple Supermarket </a>
      </h1>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
