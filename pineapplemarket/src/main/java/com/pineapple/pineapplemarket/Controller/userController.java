@@ -1,9 +1,9 @@
-package com.pineapple.pineapplemarket;
+package com.pineapple.pineapplemarket.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pineapple.Clases.user;
+import com.pineapple.pineapplemarket.Model.user;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
