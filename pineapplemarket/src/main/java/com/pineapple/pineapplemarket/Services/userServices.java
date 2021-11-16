@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.pineapple.pineapplemarket.Model.user;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class userServices implements IUserServices {
 
     @Override
