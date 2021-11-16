@@ -1,6 +1,6 @@
 import { buildQueries } from "@testing-library/dom";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import  { useParams } from "react-router-dom";
 import CardComponent from "../components/CardComponent";
 import InfoBarComponent from "../components/InfoBar";
 import { EcommerceContext } from "../context/EcommerceContext";
@@ -16,7 +16,8 @@ const ProductsContainer = () => {
     console.log(data);
     const {busqueda} = useParams();
 
-    useEffect(() => {
+    useEffect(async() => {
+      let data = await fetch('http//localhost:8080/product/GetProducts')
       console.log(busqueda)
        
     return() => {
@@ -52,7 +53,7 @@ const ProductsContainer = () => {
                   
                     return( 
                      <div key={index}>
-                      <CardComponent title={element.name} img={element.img} Agregar={Agregar}/>
+                      <CardComponent products={element.name} img={element.img} Agregar={Agregar}/>
                       
                       </div>
                     )
