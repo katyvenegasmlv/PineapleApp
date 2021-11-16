@@ -46,7 +46,7 @@ public class productController {
 
         boolean result = true;
 
-
+        servicio.save(product);
         
         return result;
     } 
