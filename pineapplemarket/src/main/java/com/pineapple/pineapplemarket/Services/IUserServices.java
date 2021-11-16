@@ -13,4 +13,7 @@ public interface IUserServices{
     
     //Metodo de eliminar de un usurio por Id
      public void deleteById(long id);
+
+     //Metodo que va a buscar un usuario
+     public user findById (long id);
 }

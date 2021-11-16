@@ -46,6 +46,8 @@ public class productController {
 
         boolean result = true;
 
+        product.id=0;
+
         servicio.save(product);
         
         return result;
@@ -59,6 +61,8 @@ public class productController {
 
         boolean result = true;
 
+        servicio.save(product);
+
         return result;
     } 
 
@@ -66,9 +70,10 @@ public class productController {
     ///Recibe por parametro el name
     //Devuelve el producto
     @GetMapping("/GetProduct")
-    public Product GetProduct(String name){
+    public Product GetProduct(long id){
         Product product = new Product();
 
+        product=servicio.findById(id);
 
         return product;
     } 
@@ -80,6 +85,8 @@ public class productController {
     public boolean DeleteProduct(long id){
         boolean result = true;
 
+        servicio.deleteById(id);
+        
         return result;
     } 
 }

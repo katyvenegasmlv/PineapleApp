@@ -1,6 +1,7 @@
 package com.pineapple.pineapplemarket.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.pineapple.pineapplemarket.Model.Product;
 import com.pineapple.pineapplemarket.Repository.IProductRepository;
@@ -28,13 +29,18 @@ public class productService implements IProductServices{
     @Override
     public Product save(Product producto) {
         
-        return null;
+        return repositorio.save(producto);
     }
 
     @Override
     public void deleteById(long id) {
-        
-        
+        repositorio.deleteById(id);        
     }
-    
+
+    @Override
+    public Product findById(long id){
+        Product product = repositorio.findById(id).orElse(new Product());
+
+        return product;
+    }
 }

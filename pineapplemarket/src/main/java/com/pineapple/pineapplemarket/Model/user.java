@@ -36,14 +36,47 @@ public class user {
    public long getId(){
       return id;
    }
-
-  public void setId(long id){
+   public void setId(long id){
       this.id = id;
-  }
-   public user(){
-       
    }
 
+   public String getusername(){
+      return username;
+   }
+   public void setusername(String username){
+      this.username=username;
+   }
+   public String getpassword(){
+      return password;
+   }
+   public void setpassword(String password){
+      this.password=password;
+   }
 
+   public String getemail(){
+      return email;
+   }
+   public void setemail(String email){
+      this.email=email;
+   }
 
+   public String getname(){
+      return name;
+   }
+   public void setname(String name){
+      this.name=name;
+   }
+
+   public String getlastName(){
+      return lastName;
+   }
+   public void setlastName(String lastName){
+      this.lastName=lastName;
+   }
+   public String getrole(){
+      return role;
+   }
+   public void setrole(String role){
+      this.role=role;
+   }
 }

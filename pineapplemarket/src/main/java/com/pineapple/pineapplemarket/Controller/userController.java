@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pineapple.pineapplemarket.Model.user;
+import com.pineapple.pineapplemarket.Services.userServices;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost")
 public class userController {
 
+    @Autowired
+    private userServices servicio;
+    
     ///Metodo para buscar muchos usuarios
     //Devuelve un listado de usuarios
     @GetMapping("/GetUsers")
     public List<user> GetUsers(){
 
         List<user> users = new ArrayList<user>();
-
-
+     
+        users=servicio.findAll();
         return users;
     } 
 
@@ -34,6 +39,8 @@ public class userController {
     //Devuelve true en caso de exito
     @GetMapping("/InsertUsert")
     public void InsertProduct(user user){
+        user.id=0;
+        servicio.save(user);
 
     } 
 
@@ -41,8 +48,8 @@ public class userController {
     ///Recibe por parametro el usuario
     //Devuelve true en caso de exito
     @GetMapping("/UpdateUser")
-    public void UpdateProduct(user user){
-
+    public void UpdateProduct(user usuario){
+        servicio.save(usuario);
     } 
 
     ///Metodo para buscar un usuario
@@ -51,7 +58,7 @@ public class userController {
     @GetMapping("/GetUser")
     public user GetUser(long id){
         user user = new user();
-
+        user=servicio.findById(id);
         return user;
     } 
 
@@ -60,6 +67,6 @@ public class userController {
     //Devuelve true en caso de exito
     @GetMapping("/DeleteUser")
     public void DeleteUser(long id){
-
+        servicio.deleteById(id);
     } 
 }
