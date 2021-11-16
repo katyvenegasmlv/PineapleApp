@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pineapple.pineapplemarket.Model.Product;
+import com.pineapple.pineapplemarket.Services.productService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost")
 public class productController {
 
+    @Autowired
+    private productService servicio;
+
+
+    @Autowired(required = true)
     ///Metodo para buscar muchos productos
     //Devuelve un listado de productos
     @GetMapping("/GetProducts")
     public List<Product> GetProducts(){
 
+        //Creo una lista de tipo producto que voy a llenar y devolver
         List<Product> products = new ArrayList<Product>();
 
+        //Lleno la lista de tipo producto
+        products = servicio.findAll();
 
+        //Retorna la lista de tipo Producto con la informacion
         return products;
     } 
 
@@ -35,6 +46,8 @@ public class productController {
 
         boolean result = true;
 
+
+        
         return result;
     } 
 
@@ -64,7 +77,7 @@ public class productController {
     ///Recibe por parametro el name
     //Devuelve true en caso de exito
     @GetMapping("/DeleteProduct")
-    public boolean DeleteProduct(String name){
+    public boolean DeleteProduct(long id){
         boolean result = true;
 
         return result;

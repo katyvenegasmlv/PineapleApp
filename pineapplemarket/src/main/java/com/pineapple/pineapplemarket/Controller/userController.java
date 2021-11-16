@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+//Path despues inicio de la URL
 @RequestMapping(path = "/user")
+//inicio de la URL
 @CrossOrigin(origins = "http://localhost")
 public class userController {
 

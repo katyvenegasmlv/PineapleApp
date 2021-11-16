@@ -6,7 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//etiqueta entidad
 @Entity
+//etiqueta que identifica el nombre de la tabla usuarios
 @Table(name="users")
 public class user {
    @Id
