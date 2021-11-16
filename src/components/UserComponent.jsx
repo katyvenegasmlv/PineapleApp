@@ -9,15 +9,15 @@ const UserComponent= ({img}) => {
     
     return(
         <div> 
-        <div className="btnexport">
-        <ReactHTMLTableToExcel
-                            id="test-table-xls-button"
-                            className="btn btn-outline-success"
-                            table="table-to-xls-user"
-                            filename="User-List"
-                            sheet="tableUser"
-                            buttonText="Download List"/>
-                  </div>          
+         <div className="btnexport">
+          <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            className="btn btn-outline-success"
+            table="table-to-xls-user"
+            filename="User-List"
+            sheet="tableUser"
+            buttonText="Download List"/>
+         </div>          
                        
 <table id="table-to-xls-user" class="table table-warnig table-hover">
 
