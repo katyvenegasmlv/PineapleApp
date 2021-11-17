@@ -69,4 +69,26 @@ public class userController {
     public void DeleteUser(long id){
         servicio.deleteById(id);
     } 
+
+    ///Metodo para buscar un usuario por login y pass
+    ///Recibe por parametro el usuario
+    //Devuelve el usuario
+    @GetMapping("/FindUserByEmailAndPass")
+    public user FindUserByEmailAndPass(String email, String pass){
+        
+        List<user> users = new ArrayList<user>();
+     
+        users=servicio.findAll();
+
+        user usuario = new user();
+
+        for (user user : users) {
+            if(user.email == email && user.password == pass){
+                usuario = user;
+            }
+        }
+
+        return usuario;
+    } 
+
 }
