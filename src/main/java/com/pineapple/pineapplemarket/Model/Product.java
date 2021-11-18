@@ -8,12 +8,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//etiqueta entidad
+//etiqueta entidad//
 @Entity
-//etiqueta que identifica el nombre de la tabla productos
+//etiqueta que identifica el nombre de la tabla productos//
 @Table(name="product")
 public class Product implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
