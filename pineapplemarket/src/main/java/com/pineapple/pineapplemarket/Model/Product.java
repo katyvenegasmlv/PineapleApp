@@ -32,7 +32,7 @@ public class Product implements Serializable {
     @Column(nullable = false )
     public double unitPrice;
 
-    @Column(nullable = false )
+    @Column(nullable = true )
     public byte[] picture;
 
     public long getId(){

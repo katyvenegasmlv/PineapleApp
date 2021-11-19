@@ -9,8 +9,11 @@ import com.pineapple.pineapplemarket.Services.userServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 
 @RestController
@@ -37,8 +40,8 @@ public class userController {
     ///Metodo para crear un usuario
     ///Recibe por parametro el usuario
     //Devuelve true en caso de exito
-    @GetMapping("/InsertUsert")
-    public void InsertProduct(user user){
+    @PostMapping("/InsertUser")
+    public void InsertUser(@RequestBody user user){
         user.id=0;
         servicio.save(user);
 
@@ -47,8 +50,8 @@ public class userController {
     ///Metodo para actualizar un usuario
     ///Recibe por parametro el usuario
     //Devuelve true en caso de exito
-    @GetMapping("/UpdateUser")
-    public void UpdateProduct(user usuario){
+    @PostMapping("/UpdateUser")
+    public void UpdateUser(@RequestBody user usuario){
         servicio.save(usuario);
     } 
 
@@ -83,7 +86,7 @@ public class userController {
         user usuario = new user();
 
         for (user user : users) {
-            if(user.email == email && user.password == pass){
+            if(user.email.equals(email) && user.password.equals(pass)){
                 usuario = user;
             }
         }

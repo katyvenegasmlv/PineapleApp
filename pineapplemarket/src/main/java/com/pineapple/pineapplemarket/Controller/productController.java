@@ -9,6 +9,8 @@ import com.pineapple.pineapplemarket.Services.productService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,8 +43,8 @@ public class productController {
     ///Metodo para crear un producto
     ///Recibe por parametro el producto
     //Devuelve true en caso de exito
-    @GetMapping("/InsertProduct")
-    public boolean InsertProduct(Product product){
+    @PostMapping("/InsertProduct")
+    public boolean InsertProduct(@RequestBody Product product){
 
         boolean result = true;
 
@@ -56,8 +58,8 @@ public class productController {
     ///Metodo para actualizar un producto
     ///Recibe por parametro el producto
     //Devuelve true en caso de exito
-    @GetMapping("/UpdateProduct")
-    public boolean UpdateProduct(Product product){
+    @PostMapping("/UpdateProduct")
+    public boolean UpdateProduct(@RequestBody Product product){
 
         boolean result = true;
 
