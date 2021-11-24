@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
+    public long id_product;
 
     @Column(length = 50,nullable = false )
     public String name;
@@ -30,16 +30,16 @@ public class Product implements Serializable {
     public double quantity;
 
     @Column(nullable = false )
-    public double unitPrice;
+    public double price;
 
     @Column(nullable = true )
     public byte[] picture;
 
-    public long getId(){
-        return id;
+    public long getId_product(){
+        return id_product;
     }
-    public void setId(long id){
-        this.id = id;
+    public void setId_product(long id_product){
+        this.id_product = id_product;
     }
 
     public String getname(){
@@ -71,11 +71,11 @@ public class Product implements Serializable {
     }
     
 
-    public double getunitPrice(){
-        return unitPrice;
+    public double getprice(){
+        return price;
     }
-    public void setunitPrice (double unitPrice){
-        this.unitPrice=unitPrice;
+    public void setprice (double price){
+        this.price=price;
     }
     
     public byte[] getpicture(){

@@ -14,9 +14,11 @@ public interface IProductServices {
     public Product save(Product producto);
 
     //Metodo de eliminar de un producto por Id
-    public void deleteById(long id);
+    public void deleteById(long id_product);
 
     //Metodo de busqueda de un producto por Id
-    public Product findById (long id);
+    public Product findById (long id_product);
+    
+
 }
 

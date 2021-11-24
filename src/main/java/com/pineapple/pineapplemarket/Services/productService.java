@@ -33,14 +33,18 @@ public class productService implements IProductServices{
     }
 
     @Override
-    public void deleteById(long id) {
-        repositorio.deleteById(id);        
+    public void deleteById(long id_product) {
+        repositorio.deleteById(id_product);        
     }
 
     @Override
-    public Product findById(long id){
-        Product product = repositorio.findById(id).orElse(new Product());
+    public Product findById(long id_product){
+        Product product = repositorio.findById(id_product).orElse(new Product());
 
         return product;
     }
+
+
+
+
 }

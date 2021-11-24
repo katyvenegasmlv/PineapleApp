@@ -1,17 +1,20 @@
 package com.pineapple.pineapplemarket.Controller;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
-import com.pineapple.pineapplemarket.Model.user;
+import com.pineapple.pineapplemarket.Model.User;
 import com.pineapple.pineapplemarket.Services.userServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -20,8 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 //Path despues inicio de la URL
 @RequestMapping(path = "/user")
 //inicio de la URL
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "*")
 public class userController {
+	
+
 
     @Autowired
     private userServices servicio;
@@ -29,9 +34,9 @@ public class userController {
     ///Metodo para buscar muchos usuarios
     //Devuelve un listado de usuarios
     @GetMapping("/GetUsers")
-    public List<user> GetUsers(){
+    public List<User> GetUsers(){
 
-        List<user> users = new ArrayList<user>();
+        List<User> users = new ArrayList<User>();
      
         users=servicio.findAll();
         return users;
@@ -41,57 +46,74 @@ public class userController {
     ///Recibe por parametro el usuario
     //Devuelve true en caso de exito
     @PostMapping("/InsertUser")
-    public void InsertUser(@RequestBody user user){
-        user.id=0;
-        servicio.save(user);
+    public boolean InsertUser(@RequestBody User users){
+    	 boolean result = true;
+    	users.id_users=0;
+        servicio.save(users);
+        return result;
 
     } 
 
     ///Metodo para actualizar un usuario
     ///Recibe por parametro el usuario
     //Devuelve true en caso de exito
-    @PostMapping("/UpdateUser")
-    public void UpdateUser(@RequestBody user usuario){
-        servicio.save(usuario);
+    @RequestMapping(value="/UpdateUser/{id_users}", method=RequestMethod.PUT)
+    public void UpdateUser(@RequestBody User users){
+        servicio.save(users);
     } 
 
     ///Metodo para buscar un usuario
     ///Recibe por parametro el id
     //Devuelve el usuario
     @GetMapping("/GetUser")
-    public user GetUser(long id){
-        user user = new user();
-        user=servicio.findById(id);
-        return user;
+    public User GetUser(long id_users){
+        User users = new User();
+        users=servicio.findById(id_users);
+        return users;
     } 
 
     ///Metodo para eliminar un usuario
     ///Recibe por parametro el usuario
     //Devuelve true en caso de exito
-    @GetMapping("/DeleteUser")
-    public void DeleteUser(long id){
-        servicio.deleteById(id);
+    @RequestMapping(value="/DeleteUser/{id_users}", method=RequestMethod.DELETE)
+    public void DeleteUser(@PathVariable long id_users){
+        servicio.deleteById(id_users);
     } 
 
     ///Metodo para buscar un usuario por login y pass
     ///Recibe por parametro el usuario
     //Devuelve el usuario
-    @GetMapping("/FindUserByEmailAndPass")
-    public user FindUserByEmailAndPass(String email, String pass){
+    @RequestMapping(value="/FindUserByEmailAndPass", method=RequestMethod.POST)
+    public boolean FindUserByEmailAndPass(@RequestBody User userRequest){
         
-        List<user> users = new ArrayList<user>();
+    	
+    	boolean response = false;
+    	
+    	
+        List<User> users = new ArrayList<User>();
      
         users=servicio.findAll();
-
-        user usuario = new user();
-
-        for (user user : users) {
-            if(user.email.equals(email) && user.password.equals(pass)){
-                usuario = user;
+        
+        String contraseña = userRequest.password;
+        byte[] bytesDecodificados = Base64.getDecoder().decode(contraseña);
+        String cadenaDecodificada = new String(bytesDecodificados);
+        
+        System.out.print(cadenaDecodificada);
+        
+        for (User user : users) {
+        
+        	String passwordInterno = user.password;
+            byte[] bytesDecodificadosInterno = Base64.getDecoder().decode(passwordInterno);
+            String password = new String(bytesDecodificadosInterno);
+            
+            if(user.email.equals(userRequest.email) && password.equals(cadenaDecodificada)){
+            	response = true;
             }
         }
+        
+        
 
-        return usuario;
-    } 
-
+        return response;
+    }
 }
+    

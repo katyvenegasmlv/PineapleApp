@@ -1,4 +1,6 @@
 package com.pineapple.pineapplemarket.Model;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +12,13 @@ import javax.persistence.Table;
 @Entity
 //etiqueta que identifica el nombre de la tabla usuarios
 @Table(name="users")
-public class user {
+public class User implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   public long id;
+   public long id_users;
 
    @Column(length = 50,nullable = false )
-   public String username;
+   public String user_name;
 
    @Column(length = 50,nullable = false )
    public String password;
@@ -28,23 +30,23 @@ public class user {
    public String name;
    
    @Column(length = 50,nullable = false )
-   public String lastName;
+   public String last_name;
 
    @Column(length = 50,nullable = false )
    public String role;
 
    public long getId(){
-      return id;
+      return id_users;
    }
-   public void setId(long id){
-      this.id = id;
+   public void setId(long id_users){
+      this.id_users = id_users;
    }
 
-   public String getusername(){
-      return username;
+   public String getuser_name(){
+      return user_name;
    }
-   public void setusername(String username){
-      this.username=username;
+   public void setuser_name(String user_name){
+      this.user_name=user_name;
    }
    public String getpassword(){
       return password;
@@ -67,11 +69,11 @@ public class user {
       this.name=name;
    }
 
-   public String getlastName(){
-      return lastName;
+   public String getlast_name(){
+      return last_name;
    }
-   public void setlastName(String lastName){
-      this.lastName=lastName;
+   public void setlast_name(String last_name){
+      this.last_name=last_name;
    }
    public String getrole(){
       return role;

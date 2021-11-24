@@ -9,18 +9,20 @@ import com.pineapple.pineapplemarket.Services.productService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequestMapping(path = "/product")
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "*")
 public class productController {
 
-    @Autowired
+	@Autowired
     private productService servicio;
 
 
@@ -48,7 +50,7 @@ public class productController {
 
         boolean result = true;
 
-        product.id=0;
+        product.id_product=0;
 
         servicio.save(product);
         
@@ -58,10 +60,11 @@ public class productController {
     ///Metodo para actualizar un producto
     ///Recibe por parametro el producto
     //Devuelve true en caso de exito
-    @PostMapping("/UpdateProduct")
+    @RequestMapping(value="/UpdateProduct/{id_product}", method=RequestMethod.PUT)
     public boolean UpdateProduct(@RequestBody Product product){
 
         boolean result = true;
+
 
         servicio.save(product);
 
@@ -71,11 +74,11 @@ public class productController {
     ///Metodo para buscar un producto
     ///Recibe por parametro el name
     //Devuelve el producto
-    @GetMapping("/GetProduct")
-    public Product GetProduct(long id){
+    @GetMapping("/GetProduct{id_product}")
+    public Product GetProduct(long id_product){
         Product product = new Product();
 
-        product=servicio.findById(id);
+        product=servicio.findById(id_product);
 
         return product;
     } 
@@ -83,11 +86,11 @@ public class productController {
     ///Metodo para eliminar un producto
     ///Recibe por parametro el name
     //Devuelve true en caso de exito
-    @GetMapping("/DeleteProduct")
-    public boolean DeleteProduct(long id){
+    @RequestMapping(value="/DeleteProduct/{id_product}", method=RequestMethod.DELETE)
+    public boolean DeleteProduct(@PathVariable long id_product){
         boolean result = true;
 
-        servicio.deleteById(id);
+        servicio.deleteById(id_product);
         
         return result;
     } 
